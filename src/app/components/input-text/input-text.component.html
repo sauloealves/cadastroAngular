@@ -1,0 +1,4 @@
+<div class="form-floating mb-3">
+  <input type="text" class="form-control" id="floatingInput" name="{{name}}"  placeholder="_" [attr.required]="required ? true : null"[ngModel]="value" (ngModelChange)="updateValue($event)">
+  <label for="{{name}}">{{Title}}</label>
+</div>

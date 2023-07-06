@@ -1,0 +1,68 @@
+<form id="form" class="form-horizontal" [formGroup]="formulario" (ngSubmit)="onSubmit()" >
+
+  <div class="form-group" [ngClass]="aplicarCssErro('name')">
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="name" formControlName="name"  placeholder="Nome completo (sem abreviações)" required >
+      <label for="name">Nome completo (sem abreviações)</label>
+      <app-campo-erro [mostrarErro]="verificarValidTouched('name')" msgErro = "Esse campo é obrigatório"></app-campo-erro>
+      <app-campo-erro [mostrarErro]="verificarTamanhoMinimoCampo('name')" msgErro = "Campo deve ter no mínimo 3 caracteres "></app-campo-erro>
+    </div>
+  </div>
+  
+  <div class="form-group" [ngClass]="aplicarCssErro('email')">
+    <div class="form-floating mb-3" >
+      <input type="text" class="form-control" id="email" formControlName="email"  placeholder="Nome completo (sem abreviações)" required >
+      <label for="email">Email</label>
+      <app-campo-erro [mostrarErro]="verificarValidTouched('email')" msgErro = "Esse campo é obrigatório"></app-campo-erro>
+    </div>
+  </div>
+  
+  <div class="form-group" [ngClass]="aplicarCssErro('cpf')">
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="cpf" formControlName="cpf"  placeholder="Nome completo (sem abreviações)" required >
+      <label for="cpf">CPF</label>
+      <app-campo-erro [mostrarErro]="verificarValidTouched('cpf')" msgErro = "Esse campo é obrigatório"></app-campo-erro>
+    </div>
+  </div>
+
+  <div class="form-group" [ngClass]="aplicarCssErro('phone')">
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="phone" formControlName="phone"  placeholder="Nome completo (sem abreviações)" required >
+      <label for="phone">Telefone</label>
+      <app-campo-erro [mostrarErro]="verificarValidTouched('phone')" msgErro = "Esse campo é obrigatório"></app-campo-erro>
+    </div>
+  </div>
+<hr>
+  <div class="row">
+    <div class="col d-flex justify-content-center">
+      <app-botao-cadastrar [disabled]="!formulario.valid" [texto]="metodo === 'cadastrar' ? 'Cadastrar': 'Salvar'" ></app-botao-cadastrar>
+      <input *ngIf="metodo !== 'cadastrar'" type="button" class="btnCancelar mb-3" value="Cancelar" (click)="cancelar()">
+    </div>
+  </div>
+</form>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>CPF</th>
+      <th>Telefone</th>
+      <th></th>
+      <!-- Adicione as demais colunas aqui -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cadastro of cadastros; let i = index">
+      <td>{{ cadastro.name }}</td>
+      <td>{{ cadastro.email }}</td>
+      <td>{{ cadastro.cpf }}</td>
+      <td>{{ cadastro.phone }}</td>
+      <td>
+        <input type="button" class="btn btn-primary me-2" value="Editar" (click)="editar(i)">
+        <input type="button" class="btn btn-danger" value="Excluir" (click)="confirmarExclusao(i)">
+      </td>
+      <!-- Adicione as demais colunas aqui -->
+    </tr>
+  </tbody>
+</table>

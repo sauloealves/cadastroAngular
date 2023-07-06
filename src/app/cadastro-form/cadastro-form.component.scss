@@ -1,0 +1,27 @@
+.has-error {
+    color: #eb4a46;
+    border-bottom:  1px solid #eb4a46;
+}
+
+input{
+    border: #efeeed;
+}
+
+input:focus{
+    color: #333333;
+    border: 0px #efeeed;
+}
+
+input:not(:focus){
+    color: #efeeed;
+}
+
+.btnCancelar {
+    border: none;
+    border-radius: 50px;
+    text-align: center;
+    padding: 10px 20px;
+    color: #ffffff;
+    background-color: #dc3545;
+    cursor: pointer;
+  }
